@@ -285,8 +285,8 @@
 
                         <!-- column 2 starts -->
                         <div class="col-12 col-md-2 dtr-rounded-img small-device-space">
-                            <img style="height: 180px;position: absolute;z-index: 99;" src="assets/images/threeYearsExp.jpg"
-                                alt="image" />
+                            <img style="height: 180px;position: absolute;z-index: 99;"
+                                src="assets/images/threeYearsExp.jpg" alt="image" />
                         </div>
                         <!-- column 2 ends -->
                     </div>
@@ -316,13 +316,13 @@
                         <div class="col-12 col-md-6">
                             <!-- heading starts -->
                             <div class="dtr-styled-heading">
-                                <h2>About Me</h2>
+                                <h2 id="about_me">About Me</h2>
                                 <p>Subheading or information goes here</p>
                             </div>
                             <!-- heading ends -->
 
                             <!-- text -->
-                            <p class="font-weight-500 color-dark">
+                            <p class="font-weight-500 color-dark description">
                                 I am a 25 years old passionate FrontEnd Web Developer based
                                 in Lahore, Pakistan who enjoys building software. Very
                                 positive and highly motivated person with over 3+ years of
@@ -376,7 +376,7 @@
                             </div>
 
                             <!-- link starts -->
-                            <a id="reumee" href="./Muhammad ijaz cv.pdf" download
+                            <a id="reumee" href="./Muhammad ijaz.pdf" download
                                 class="dtr-btn btn-blue dtr-mt-30">Download CV <i
                                     class="icon-chevron-compact-right"></i></a>
                         </div>
@@ -911,7 +911,8 @@
                             class="dtr-portfolio-item isotope-item filter-design filter-photography filter-creative filter-photography all">
                             <div class="dtr-portfolio-content">
                                 <!-- <img src="assets/images/corporateMain.webp" alt="corporate-invents.com" /> -->
-                                <video class="w-100 h-100" src="./assets/images/corporate-invents.webm" autoplay loop></video>
+                                <video class="w-100 h-100" src="./assets/images/corporate-invents.webm" autoplay
+                                    loop></video>
                                 <!-- <div class="dtr-portfolio-overlay">
                                     <a class="media-zoom popup-gallery" href="http://corporate-invents.com" target="_blank">Visit Website</a>
                                     <div class="dtr-portfolio-hover-content">
@@ -1252,7 +1253,37 @@
             fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
                 .catch(error => console.error('Error!', error.message))
-        })
+        });
+        // type animation start
+        const typeEffect = (h1, speed) => {
+            let text = h1.innerHTML;
+            h1.innerHTML = '';
+
+            let i = 0;
+            var timer = setInterval(() => {
+                if (i < text.length) {
+                    h1.append(text.charAt(i));
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, speed);
+        }
+
+        const speed = 75;
+        const h1 = document.querySelector('#about_me');
+        const p = document.querySelector('p.description');
+        const delay = h1.innerHTML.length * speed + speed;
+
+        typeEffect(h1, speed);
+
+        setTimeout(() => {
+            p.style.display = 'inline-block';
+            typeEffect(p, speed);
+            console.log(delay, 'delay');
+        }, delay);
+        // type animation end
+
     </script>
 
     <script src="assets/js/jquery.min.js"></script>
